@@ -19,6 +19,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.util.Log
 
 
 class MainActivity : AppCompatActivity() {
@@ -70,7 +71,8 @@ class MainActivity : AppCompatActivity() {
             if (requestCode == PICK_IMAGE_CODE) {
                 if (data != null) {
                     val image = data.data
-                    val number = "916352517474"
+                    val number = "919429957789"
+                    val message = "I am sending the image for testing"
                     val installed = whatsappInstalledOrNot("com.whatsapp")
                     if (installed) {
                         val whatsappIntent = Intent(Intent.ACTION_SEND)
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                         whatsappIntent.setType("text/plain")
                         whatsappIntent.putExtra(
                             Intent.EXTRA_TEXT,
-                            "I am sending the image for testing"
+                            message
                         )
                         whatsappIntent.putExtra(Intent.EXTRA_STREAM, image)
                         whatsappIntent.setType("image/*")
@@ -87,6 +89,7 @@ class MainActivity : AppCompatActivity() {
                             "jid",
                             PhoneNumberUtils.stripSeparators(number) + "@s.whatsapp.net"
                         ) //phone number without "+" prefix
+                        Log.e("whatsapi","${PhoneNumberUtils.stripSeparators(number)}@s.whatsapp.net")
                         startActivity(whatsappIntent)
                     }
 
@@ -112,7 +115,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 /*
-    working code for whatsap for saving numbers
+    working code for WhatsAap for saving numbers
 
     val whatsappIntent = Intent(Intent.ACTION_SEND)
                         whatsappIntent.setType("text/plain")
