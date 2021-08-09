@@ -19,7 +19,10 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.util.Log
+import java.lang.Exception
+import java.net.URLEncoder
 
 
 class MainActivity : AppCompatActivity() {
